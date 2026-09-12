@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Martial Artists</title>
+</head>
+<body>
+    <h1>Martial Artists</h1>
+    <a href="/artists/add">Add New Artist</a>
+    <table border="1">
+        <tr>
+            <th>ID</th><th>Name</th><th>Age</th><th>Belt</th><th>Mobile</th><th>Class ID</th><th>Email</th><th>Action</th>
+        </tr>
+        {% for a in artists %}
+        <tr>
+            <td>{{ a.artist_id }}</td>
+            <td>{{ a.artist_name }}</td>
+            <td>{{ a.age }}</td>
+            <td>{{ a.belt }}</td>
+            <td>{{ a.mob_no }}</td>
+            <td>{{ a.class_id }}</td>
+            <td>{{ a.email }}</td>
+            <td><a href="/artists/delete/{{ a.artist_id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
