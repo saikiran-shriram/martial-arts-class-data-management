@@ -7,8 +7,8 @@ def get_db():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="your_mysql_password",  # replace with your actual password
-        database="your_database_name"     # replace with your actual DB name
+        password="@Password",  
+        database="martialartsclass"    
     )
 
 @app.route('/')
