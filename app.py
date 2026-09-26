@@ -57,7 +57,7 @@ def coaches():
 def add_coach():
     if request.method == 'POST':
         coach_id = request.form['coach_id']
-        artist_name = request.form['coach_name']
+        coach_name = request.form['coach_name']
         age = request.form['age']
         belt = request.form['belt']
         experience = request.form['experience']
