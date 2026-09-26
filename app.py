@@ -35,11 +35,24 @@ def add_artist():
         class_id = request.form['class_id']
         email = request.form['email']
 
+        conn = get_db()
+        cursor = conn.cursor()
+        cursor.execute("""
+            INSERT INTO Martial_Artist (artist_id, artist_name, age, belt, mobile , class_id, email)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """, (coach_id, coach_name, age, belt, mobile, class_id, email))
+        conn.commit()
+        conn.close()
+        return redirect('/artists')
+
+    return render_template('add_artists.html')
+
+
 @app.route('/artists/delete/<int:artist_id>')
 def delete_artist(artist_id):
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM Artist WHERE artist_id = %s", (artist_id,))
+    cursor.execute("DELETE FROM Martial_Artist WHERE artist_id = %s", (artist_id,))
     conn.commit()
     conn.close()
     return redirect('/artists')
