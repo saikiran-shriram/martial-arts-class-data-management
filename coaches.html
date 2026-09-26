@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Coaches</h1>
-    <c href="/coaches/add">Add New Coach</c>
+    <a href="/coaches/add">Add New Coach</a>
     <table border="1">
         <tr>
             <th>ID</th><th>Name</th><th>Age</th><th>Belt</th><th>Experience</th><th>Email</th><th>Action</th>
@@ -18,7 +18,7 @@
             <td>{{ c.belt }}</td>
             <td>{{ c.experience }}</td>
             <td>{{ c.email }}</td>
-            <td><c href="/coaches/delete/{{ c.coach_id }}">Delete</c></td>
+            <td><a href="/coaches/delete/{{ c.coach_id }}">Delete</a></td>
         </tr>
         {% endfor %}
     </table>
