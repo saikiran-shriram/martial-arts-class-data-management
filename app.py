@@ -40,7 +40,7 @@ def add_artist():
         cursor.execute("""
             INSERT INTO Martial_Artist (artist_id, artist_name, age, belt, mobile , class_id, email)
             VALUES (%s, %s, %s, %s, %s, %s, %s)
-        """, (coach_id, coach_name, age, belt, mobile, class_id, email))
+        """, (artist_id, artist_name, age, belt, mobile, class_id, email))
         conn.commit()
         conn.close()
         return redirect('/artists')
