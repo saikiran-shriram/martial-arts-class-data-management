@@ -45,7 +45,7 @@ def add_artist():
         conn.close()
         return redirect('/artists')
 
-    return render_template('add_artists.html')
+    return render_template('add_artist.html')
 
 
 @app.route('/artists/delete/<int:artist_id>')
@@ -87,7 +87,7 @@ def add_coach():
         conn.close()
         return redirect('/coaches')
 
-    return render_template('add_coaches.html')
+    return render_template('add_coach.html')
 
 @app.route('/coaches/delete/<int:coach_id>')
 def delete_coach(coach_id):
