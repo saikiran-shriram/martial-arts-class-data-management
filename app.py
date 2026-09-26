@@ -35,26 +35,50 @@ def add_artist():
         class_id = request.form['class_id']
         email = request.form['email']
 
+@app.route('/')
+def index():
+    return redirect('/coaches')
+
+@app.route('/coaches')
+def artists():
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM Coach")
+    all_coaches = cursor.fetchall()
+    conn.close()
+    return render_template('coaches.html', coaches=all_coaches)
+
+@app.route('/coaches/add', methods=['GET', 'POST'])
+def add_artist():
+    if request.method == 'POST':
+        coach_id = request.form['coach_id']
+        artist_name = request.form['coach_name']
+        age = request.form['age']
+        belt = request.form['belt']
+        experience = request.form['experience']
+        email = request.form['email']
+        
+
         conn = get_db()
         cursor = conn.cursor()
         cursor.execute("""
-            INSERT INTO Martial_Artist (artist_id, artist_name, age, belt, mob_no, class_id, email)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
-        """, (artist_id, artist_name, age, belt, mob_no, class_id, email))
+            INSERT INTO Coach (coach_id, coach_name, age, belt, experience, email)
+            VALUES (%s, %s, %s, %s, %s, %s)
+        """, (coach_id, coach_name, age, belt, experience, email))
         conn.commit()
         conn.close()
-        return redirect('/artists')
+        return redirect('/coaches')
 
-    return render_template('add_artist.html')
+    return render_template('add_coaches.html')
 
-@app.route('/artists/delete/<int:artist_id>')
-def delete_artist(artist_id):
+@app.route('/artists/delete/<int:coach_id>')
+def delete_artist(coach_id):
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM Martial_Artist WHERE artist_id = %s", (artist_id,))
+    cursor.execute("DELETE FROM Coach WHERE coach_id = %s", (coach_id,))
     conn.commit()
     conn.close()
-    return redirect('/artists')
+    return redirect('/coaches')
 
 if __name__ == '__main__':
     app.run(debug=True)
