@@ -86,4 +86,4 @@ def delete_coach(coach_id):
     return redirect('/coaches')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,use_reloader=False)
