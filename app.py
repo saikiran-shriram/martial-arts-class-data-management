@@ -63,6 +63,7 @@ def coaches():
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM Coach")
     all_coaches = cursor.fetchall()
+    print(all_coaches)   
     conn.close()
     return render_template('coaches.html', coaches=all_coaches)
 
