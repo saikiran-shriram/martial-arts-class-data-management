@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Classes</h1>
-    <c href="/classes/add">Add New Class</c>
+    <a href="/classes/add">Add New Class</a>
     <table border="1">
         <tr>
             <th>ID</th><th>Address</th><th>City</th><th>State</th><th>Opening Date</th><th>No of Students</th><th>Style ID</th><th>Coach ID</th><th>Action</th>
@@ -20,7 +20,7 @@
             <td>{{ c.no_of_students }}</td>
             <td>{{ c.style_id }}</td>
             <td>{{ c.coach_id }}</td>
-            <td><c href="/classes/delete/{{ c.class_id }}">Delete</c></td>
+            <td><a href="/classes/delete/{{ c.class_id }}">Delete</a></td>
         </tr>
         {% endfor %}
     </table>
