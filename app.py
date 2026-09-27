@@ -38,9 +38,9 @@ def add_artist():
         conn = get_db()
         cursor = conn.cursor()
         cursor.execute("""
-            INSERT INTO Martial_Artist (artist_id, artist_name, age, belt, mobile , class_id, email)
+            INSERT INTO Martial_Artist (artist_id, artist_name, age, belt, mob_no , class_id, email)
             VALUES (%s, %s, %s, %s, %s, %s, %s)
-        """, (artist_id, artist_name, age, belt, mobile, class_id, email))
+        """, (artist_id, artist_name, age, belt, mob_no, class_id, email))
         conn.commit()
         conn.close()
         return redirect('/artists')
@@ -105,7 +105,7 @@ def classes():
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM Dojo_Class")
     all_classes = cursor.fetchall()
-    print(all_coaches)   
+    print(all_classes)   
     conn.close()
     return render_template('classes.html', classes=all_classes)
 
@@ -123,10 +123,9 @@ def add_class():
 
         conn = get_db()
         cursor = conn.cursor()
-        cursor.execute("""
-            INSERT INTO Dojo_Class (class_id, address, city, state, opening_date, no_of_students ,style_id , coach_id)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %S)
-        """, class_id, address, city, state, opening_date, no_of_students ,style_id , coach_id))
+        cursor.execute(""" INSERT INTO Dojo_Class (class_id, address, city, state, opening_date, no_of_students, style_id, coach_id) 
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s) 
+    """, (class_id, address, city, state, opening_date, no_of_students, style_id, coach_id))
         conn.commit()
         conn.close()
         return redirect('/classes')
