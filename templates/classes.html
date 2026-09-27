@@ -5,22 +5,25 @@
 </head>
 <body>
     <h1>Classes</h1>
-    <a href="/classes/add">Add New Class</a>
+    <c href="/classes/add">Add New Class</c>
     <table border="1">
         <tr>
-            <th>ID</th><th>Name</th><th>Age</th><th>Belt</th><th>Experience</th><th>Email</th><th>Action</th>
+            <th>ID</th><th>Address</th><th>City</th><th>State</th><th>Opening Date</th><th>No of Students</th><th>Style ID</th><th>Coach ID</th><th>Action</th>
         </tr>
-        {% for c in coaches %}
+        {% for c in classes %}
         <tr>
             <td>{{ c.class_id }}</td>
-            <td>{{ c.name }}</td>
-            <td>{{ c.age }}</td>
-            <td>{{ c.belt }}</td>
-            <td>{{ c.experience }}</td>
-            <td>{{ c.email }}</td>
-            <td><a href="/coaches/delete/{{ c.coach_id }}">Delete</a></td>
+            <td>{{ c.address }}</td>
+            <td>{{ c.city }}</td>
+            <td>{{ c.state }}</td>
+            <td>{{ c.opening_date }}</td>
+            <td>{{ c.no_of_students }}</td>
+            <td>{{ c.style_id }}</td>
+            <td>{{ c.coach_id }}</td>
+            <td><c href="/classes/delete/{{ c.class_id }}">Delete</c></td>
         </tr>
         {% endfor %}
     </table>
 </body>
 </html>
+        
