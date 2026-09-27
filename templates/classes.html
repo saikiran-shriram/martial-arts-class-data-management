@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classes</title>
+</head>
+<body>
+    <h1>Classes</h1>
+    <a href="/classes/add">Add New Class</a>
+    <table border="1">
+        <tr>
+            <th>ID</th><th>Name</th><th>Age</th><th>Belt</th><th>Experience</th><th>Email</th><th>Action</th>
+        </tr>
+        {% for c in coaches %}
+        <tr>
+            <td>{{ c.class_id }}</td>
+            <td>{{ c.name }}</td>
+            <td>{{ c.age }}</td>
+            <td>{{ c.belt }}</td>
+            <td>{{ c.experience }}</td>
+            <td>{{ c.email }}</td>
+            <td><a href="/coaches/delete/{{ c.coach_id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
