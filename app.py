@@ -70,7 +70,7 @@ def coaches():
 def add_coach():
     if request.method == 'POST':
         coach_id = request.form['coach_id']
-        coach_name = request.form['coach_name']
+        name = request.form['name']
         age = request.form['age']
         belt = request.form['belt']
         experience = request.form['experience']
@@ -80,9 +80,9 @@ def add_coach():
         conn = get_db()
         cursor = conn.cursor()
         cursor.execute("""
-            INSERT INTO Coach (coach_id, coach_name, age, belt, experience, email)
+            INSERT INTO Coach (coach_id, name, age, belt, experience, email)
             VALUES (%s, %s, %s, %s, %s, %s)
-        """, (coach_id, coach_name, age, belt, experience, email))
+        """, (coach_id, name, age, belt, experience, email))
         conn.commit()
         conn.close()
         return redirect('/coaches')
