@@ -76,7 +76,6 @@ def add_coach():
         belt = request.form['belt']
         experience = request.form['experience']
         email = request.form['email']
-        
 
         conn = get_db()
         cursor = conn.cursor()
