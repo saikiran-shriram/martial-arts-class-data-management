@@ -149,7 +149,7 @@ def styles():
     all_styles = cursor.fetchall()
     print(all_styles)   
     conn.close()
-    return render_template('styles.html', classes=all_styles)
+    return render_template('styles.html', styles=all_styles)
 
 @app.route('/styles/add', methods=['GET', 'POST'])
 def add_style():
