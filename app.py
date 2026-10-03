@@ -179,6 +179,43 @@ def delete_style(style_id):
     conn.close()
     return redirect('/styles')
 
+@app.route('/tournaments')
+def tournaments():
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM Tournament")
+    all_tournaments = cursor.fetchall()
+    print(all_tournaments)   
+    conn.close()
+    return render_template('tournaments.html', tournaments=all_tournaments)
+
+@app.route('/tournaments/add', methods=['GET', 'POST'])
+def add_tournament():
+    if request.method == 'POST':
+        tournament_id = request.form['tournament_id']
+        date = request.form['date']
+        venue = request.form['venue']
+        level = request.form['level']
+
+        conn = get_db()
+        cursor = conn.cursor()
+        cursor.execute(""" INSERT INTO Tournament (tournament_id, date, venue, level) 
+        VALUES (%s, %s, %s, %s) 
+    """, (tournament_id, date, venue, level))
+        conn.commit()
+        conn.close()
+        return redirect('/tournaments')
+
+    return render_template('add_tournament.html')
+
+@app.route('/tournaments/delete/<int:tournament_id>')
+def delete_tournament(tournament_id):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM Tournament WHERE tournament_id = %s", (tournament_id,))
+    conn.commit()
+    conn.close()
+    return redirect('/tournaments')
 
 if __name__ == '__main__':
     app.run(debug=True,use_reloader=False)
