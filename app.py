@@ -141,5 +141,44 @@ def delete_class(class_id):
     conn.close()
     return redirect('/classes')
 
+@app.route('/styles')
+def styles():
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM martial_art_style")
+    all_styles = cursor.fetchall()
+    print(all_styles)   
+    conn.close()
+    return render_template('styles.html', classes=all_styles)
+
+@app.route('/styles/add', methods=['GET', 'POST'])
+def add_style():
+    if request.method == 'POST':
+        style_id = request.form['style_id']
+        type = request.form['type']
+        origin_country = request.form['origin_country']
+        description = request.form['description']
+
+        conn = get_db()
+        cursor = conn.cursor()
+        cursor.execute(""" INSERT INTO Martial_Art_Style (style_id, type, origin_country, description) 
+        VALUES (%s, %s, %s, %s) 
+    """, (style_id, type, origin_country, description))
+        conn.commit()
+        conn.close()
+        return redirect('/styles')
+
+    return render_template('add_style.html')
+
+@app.route('/styles/delete/<int:style_id>')
+def delete_style(style_id):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM Martial_Art_Style WHERE style_id = %s", (style_id,))
+    conn.commit()
+    conn.close()
+    return redirect('/styles')
+
+
 if __name__ == '__main__':
     app.run(debug=True,use_reloader=False)
