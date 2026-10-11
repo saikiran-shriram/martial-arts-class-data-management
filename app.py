@@ -217,5 +217,42 @@ def delete_tournament(tournament_id):
     conn.close()
     return redirect('/tournaments')
 
+@app.route('/participations')
+def participations():
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM participates_in")
+    all_participations = cursor.fetchall()
+    print(all_participations)   
+    conn.close()
+    return render_template('participations.html', participations=all_participations)
+
+@app.route('/participations/add', methods=['GET', 'POST'])
+def add_participation():
+    if request.method == 'POST':
+        artist_id = request.form['artist_id']
+        tournament_id = request.form['tournament_id']
+        result = request.form['result']
+
+        conn = get_db()
+        cursor = conn.cursor()
+        cursor.execute(""" INSERT INTO Participates_in (artist_id, tournament_id, result) 
+        VALUES (%s, %s, %s) 
+    """, (artist_id, tournament_id, result))
+        conn.commit()
+        conn.close()
+        return redirect('/participations')
+
+    return render_template('add_participation.html')
+
+@app.route('/participations/delete/<int:artist_id>')
+def delete_participation(artist_id):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM Participates_in WHERE artist_id = %s", (artist_id,))
+    conn.commit()
+    conn.close()
+    return redirect('/participations')
+
 if __name__ == '__main__':
     app.run(debug=True,use_reloader=False)
