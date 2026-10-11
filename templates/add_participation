@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Participation</title>
+</head>
+<body>
+    <h1>Add New Participation </h1>
+    <form method="POST">
+        Artist ID: <input type="number" name="artist_id" required><br>
+        Tournament ID: <input type="number" name="tournament_id" required><br>
+        Result: <input type="text" name="result"><br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
