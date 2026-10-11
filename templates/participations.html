@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Participations</title>
+</head>
+<body>
+    <h1>Participations</h1>
+    <a href="/participations/add">Add New Participation</a>
+    <table border="1">
+        <tr>
+            <th>Artist ID </th><th>Tournament ID </th><th>Result</th><th>Action</th>
+        </tr>
+        {% for p in participations %}
+        <tr>
+            <td>{{ p.artist_id }}</td>
+            <td>{{ p.tournament_id }}</td>
+            <td>{{ p.result }}</td>
+            <td><a href="/participations/delete/{{ p.artist_id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
