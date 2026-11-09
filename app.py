@@ -339,6 +339,32 @@ def add_tournament():
 
     return render_template('add_tournament.html')
 
+@app.route('/tournaments/edit/<int:tournament_id>', methods=['GET', 'POST'])
+def edit_tournament(tournament_id):
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+    if request.method == 'POST':
+        date = request.form['date']
+        venue = request.form['venue']
+        level = request.form['level']
+
+        cursor.execute("""
+            UPDATE Tournament
+            SET date = %s, venue = %s, level = %s
+            WHERE tournament_id = %s
+        """, (date, venue, level, tournament_id))
+
+        conn.commit()
+        conn.close()
+        return redirect('/tournaments')
+    cursor.execute(
+        "SELECT * FROM Tournament WHERE tournament_id = %s",
+        (tournament_id,)
+    )
+    tournament = cursor.fetchone()
+    conn.close()
+    return render_template('edit_tournament.html', tournament=tournament)
+
 @app.route('/tournaments/delete/<int:tournament_id>')
 def delete_tournament(tournament_id):
     conn = get_db()
