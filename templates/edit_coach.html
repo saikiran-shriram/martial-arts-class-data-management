@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Coach</title>
+</head>
+<body>
+    <h1>Edit Coach Details</h1>
+
+    <form method="POST">
+        <label>Coach ID:</label>
+        <input type="number" value="{{ coach.coach_id }}" disabled>
+        <br><br>
+
+        <label>Name:</label>
+        <input type="text" name="name" value="{{ coach.name }}" required>
+        <br><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" value="{{ coach.age }}" required>
+        <br><br>
+
+        <label>Belt:</label>
+        <input type="text" name="belt" value="{{ coach.belt }}" required>
+        <br><br>
+
+        <label>Experience:</label>
+        <input type="number" name="experience" value="{{ coach.experience }}" required>
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" value="{{ coach.email }}" required>
+        <br><br>
+
+        <button type="submit">Update Coach</button>
+    </form>
+
+    <br>
+    <a href="/coaches">Back to Coaches</a>
+</body>
+</html>
