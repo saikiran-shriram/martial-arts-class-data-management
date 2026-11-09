@@ -15,7 +15,10 @@
             <td>{{ p.artist_id }}</td>
             <td>{{ p.tournament_id }}</td>
             <td>{{ p.result }}</td>
-            <td><a href="/participations/delete/{{ p.artist_id }}">Delete</a></td>
+            <td>
+    <a href="/participations/edit/{{ p.artist_id }}/{{ p.tournament_id }}">Edit</a> |
+    <a href="/participations/delete/{{ p.artist_id }}/{{ p.tournament_id }}">Delete</a>
+</td>
         </tr>
         {% endfor %}
     </table>
