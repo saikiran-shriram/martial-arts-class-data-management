@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Attendance</title>
+</head>
+<body>
+    <h1>Edit Attendance Details</h1>
+
+    <form method="POST">
+        <label>Artist ID:</label>
+        <input type="number" value="{{ record.artist_id }}" disabled>
+        <br><br>
+
+        <label>Class ID:</label>
+        <input type="number" value="{{ record.class_id }}" disabled>
+        <br><br>
+
+        <label>Date:</label>
+        <input type="date" name="date" value="{{ record.date }}" required>
+        <br><br>
+
+        <label>Time:</label>
+        <input type="time" name="time" value="{{ record.time }}" required>
+        <br><br>
+
+        <label>Status:</label>
+        <input type="text" name="status" value="{{ record.status }}" required>
+        <br><br>
+
+        <button type="submit">Update Attendance</button>
+    </form>
+
+    <br>
+    <a href="/attendance">Back to Attendance</a>
+</body>
+</html>
