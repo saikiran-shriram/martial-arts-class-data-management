@@ -1,28 +1,43 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Coaches</title>
+    <title>Add Coach</title>
 </head>
 <body>
-    <h1>Coaches</h1>
-    <c href="/coaches/add">Add New Coach</c>
-    <table border="1">
-        <tr>
-            <th>ID</th><th>Name</th><th>Age</th><th>Belt</th><th>Experience</th><th>Email</th><th>Action</th>
-        </tr>
-        {% for c in coaches %}
-        <tr>
-            <td>{{ c.coach_id }}</td>
-            <td>{{ c.name }}</td>
-            <td>{{ c.age }}</td>
-            <td>{{ c.belt }}</td>
-            <td>{{ c.experience }}</td>
-            <td>{{ c.email }}</td>
-            <td><a href="/coaches/delete/{{ c.coach_id }}">Delete</a></td>
-        </tr>
-        {% endfor %}
-    </table>
+    <h1>Add New Coach</h1>
+
+    <form method="POST" action="/coaches/add">
+
+        <label>Coach ID:</label>
+        <input type="number" name="coach_id" required>
+        <br><br>
+
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <br><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" required>
+        <br><br>
+
+        <label>Belt:</label>
+        <input type="text" name="belt" required>
+        <br><br>
+
+        <label>Experience:</label>
+        <input type="number" name="experience" required>
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <br><br>
+
+        <button type="submit">Add Coach</button>
+
+    </form>
+
+    <br>
+    <a href="/coaches">Back to Coaches</a>
 </body>
 </html>
-
-
