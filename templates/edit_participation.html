@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Participation</title>
+</head>
+<body>
+    <h1>Edit Participation Details</h1>
+
+    <form method="POST">
+        <label>Artist ID:</label>
+        <input type="number" value="{{ participation.artist_id }}" disabled>
+        <br><br>
+
+        <label>Tournament ID:</label>
+        <input type="number" value="{{ participation.tournament_id }}" disabled>
+        <br><br>
+
+        <label>Result:</label>
+        <input type="text" name="result" value="{{ participation.result }}" required>
+        <br><br>
+
+        <button type="submit">Update Participation</button>
+    </form>
+
+    <br>
+    <a href="/participations">Back to Participations</a>
+</body>
+</html>
