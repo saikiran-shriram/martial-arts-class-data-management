@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Tournament</title>
+</head>
+<body>
+    <h1>Edit Tournament Details</h1>
+
+    <form method="POST">
+        <label>Tournament ID:</label>
+        <input type="number" value="{{ tournament.tournament_id }}" disabled>
+        <br><br>
+
+        <label>Date:</label>
+        <input type="date" name="date" value="{{ tournament.date }}" required>
+        <br><br>
+
+        <label>Venue:</label>
+        <input type="text" name="venue" value="{{ tournament.venue }}" required>
+        <br><br>
+
+        <label>Level:</label>
+        <input type="text" name="level" value="{{ tournament.level }}" required>
+        <br><br>
+
+        <button type="submit">Update Tournament</button>
+    </form>
+
+    <br>
+    <a href="/tournaments">Back to Tournaments</a>
+</body>
+</html>
