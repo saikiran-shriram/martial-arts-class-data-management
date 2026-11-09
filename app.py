@@ -274,6 +274,33 @@ def add_style():
 
     return render_template('add_style.html')
 
+@app.route('/styles/edit/<int:style_id>', methods=['GET', 'POST'])
+def edit_style(style_id):
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+
+    if request.method == 'POST':
+        style_type = request.form['type']
+        origin_country = request.form['origin_country']
+        description = request.form['description']
+
+        cursor.execute("""
+            UPDATE Martial_Art_Style
+            SET type = %s, origin_country = %s, description = %s
+            WHERE style_id = %s
+        """, (style_type, origin_country, description, style_id))
+
+        conn.commit()
+        conn.close()
+        return redirect('/styles')
+    cursor.execute(
+        "SELECT * FROM Martial_Art_Style WHERE style_id = %s",
+        (style_id,)
+    )
+    style = cursor.fetchone()
+    conn.close()
+    return render_template('edit_style.html', style=style)
+
 @app.route('/styles/delete/<int:style_id>')
 def delete_style(style_id):
     conn = get_db()
