@@ -16,7 +16,10 @@
             <td>{{ t.date }}</td>
             <td>{{ t.venue }}</td>
             <td>{{ t.level }}</td>
-            <td><a href="/tournaments/delete/{{ t.tournament_id }}">Delete</a></td>
+<td>
+    <a href="/tournaments/edit/{{ t.tournament_id }}">Edit</a> |
+    <a href="/tournaments/delete/{{ t.tournament_id }}">Delete</a>
+</td>
         </tr>
         {% endfor %}
     </table>
