@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,11 +6,20 @@
 </head>
 <body>
     <h1>Coaches</h1>
+
     <a href="/coaches/add">Add New Coach</a>
+
     <table border="1">
         <tr>
-            <th>ID</th><th>Name</th><th>Age</th><th>Belt</th><th>Experience</th><th>Email</th><th>Action</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Belt</th>
+            <th>Experience</th>
+            <th>Email</th>
+            <th>Action</th>
         </tr>
+
         {% for c in coaches %}
         <tr>
             <td>{{ c.coach_id }}</td>
@@ -18,7 +28,9 @@
             <td>{{ c.belt }}</td>
             <td>{{ c.experience }}</td>
             <td>{{ c.email }}</td>
-            <td><a href="/coaches/delete/{{ c.coach_id }}">Delete</a></td>
+            <td>
+                <a href="/coaches/delete/{{ c.coach_id }}">Delete</a>
+            </td>
         </tr>
         {% endfor %}
     </table>
