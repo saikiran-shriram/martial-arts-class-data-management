@@ -473,6 +473,37 @@ def add_attendance():
 
     return render_template('add_attendance.html')
 
+@app.route('/attendance/edit/<int:artist_id>/<int:class_id>', methods=['GET', 'POST'])
+def edit_attendance(artist_id, class_id):
+
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+
+    if request.method == 'POST':
+        date = request.form['date']
+        time = request.form['time']
+        status = request.form['status']
+
+        cursor.execute("""
+            UPDATE Attendance
+            SET date = %s, time = %s, status = %s
+            WHERE artist_id = %s AND class_id = %s
+        """, (date, time, status, artist_id, class_id))
+
+        conn.commit()
+        conn.close()
+        return redirect('/attendance')
+
+    cursor.execute("""
+        SELECT * FROM Attendance
+        WHERE artist_id = %s AND class_id = %s
+    """, (artist_id, class_id))
+
+    record = cursor.fetchone()
+    conn.close()
+
+    return render_template('edit_attendance.html', record=record)
+
 @app.route('/attendance/delete/<int:artist_id><int:class_id>')
 def delete_attendance(artist_id,class_id):
     conn = get_db()
