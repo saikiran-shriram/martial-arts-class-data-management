@@ -89,6 +89,40 @@ def add_coach():
 
     return render_template('add_coach.html')
 
+@app.route('/coaches/edit/<int:coach_id>', methods=['GET', 'POST'])
+def edit_coach(coach_id):
+
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+
+    if request.method == 'POST':
+        name = request.form['name']
+        age = request.form['age']
+        belt = request.form['belt']
+        experience = request.form['experience']
+        email = request.form['email']
+
+        cursor.execute("""
+            UPDATE Coach
+            SET name = %s, age = %s, belt = %s,
+                experience = %s, email = %s
+            WHERE coach_id = %s
+        """, (name, age, belt, experience, email, coach_id))
+
+        conn.commit()
+        conn.close()
+
+        return redirect('/coaches')
+
+    cursor.execute(
+        "SELECT * FROM Coach WHERE coach_id = %s",
+        (coach_id,)
+    )
+    coach = cursor.fetchone()
+    conn.close()
+
+    return render_template('edit_coach.html', coach=coach)
+
 @app.route('/coaches/delete/<int:coach_id>')
 def delete_coach(coach_id):
     conn = get_db()
