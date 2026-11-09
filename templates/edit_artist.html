@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Martial Artist</title>
+</head>
+<body>
+    <h1>Edit Martial Artist Details</h1>
+
+    <form method="POST">
+
+        <label>Artist ID:</label>
+        <input type="number" value="{{ artist.artist_id }}" disabled>
+        <br><br>
+
+        <label>Name:</label>
+        <input type="text" name="artist_name" value="{{ artist.artist_name }}" required>
+        <br><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" value="{{ artist.age }}" required>
+        <br><br>
+
+        <label>Belt:</label>
+        <input type="text" name="belt" value="{{ artist.belt }}" required>
+        <br><br>
+
+        <label>Mobile:</label>
+        <input type="text" name="mob_no" value="{{ artist.mob_no }}" required>
+        <br><br>
+
+        <label>Class ID:</label>
+        <input type="number" name="class_id" value="{{ artist.class_id }}" required>
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" value="{{ artist.email }}" required>
+        <br><br>
+
+        <button type="submit">Update Artist</button>
+    </form>
+
+    <br>
+    <a href="/artists">Back to Artists</a>
+</body>
+</html>
