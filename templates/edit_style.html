@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Style</title>
+</head>
+<body>
+    <h1>Edit Martial Art Style</h1>
+
+    <form method="POST">
+        <label>Style ID:</label>
+        <input type="number" value="{{ style.style_id }}" disabled>
+        <br><br>
+
+        <label>Type:</label>
+        <input type="text" name="type" value="{{ style.type }}" required>
+        <br><br>
+
+        <label>Origin Country:</label>
+        <input type="text" name="origin_country" value="{{ style.origin_country }}" required>
+        <br><br>
+
+        <label>Description:</label>
+        <textarea name="description" required>{{ style.description }}</textarea>
+        <br><br>
+
+        <button type="submit">Update Style</button>
+    </form>
+
+    <br>
+    <a href="/styles">Back to Styles</a>
+</body>
+</html>
