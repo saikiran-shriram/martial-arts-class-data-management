@@ -17,7 +17,10 @@
             <td>{{ a.date }}</td>
             <td>{{ a.time }}</td>
             <td>{{ a.status }}</td>
-            <td><a href="/attendance/delete/{{ a.artist_id ,a.class_id}}">Delete</a></td>
+            <td>
+    <a href="/attendance/edit/{{ a.artist_id }}/{{ a.class_id }}">Edit</a> |
+    <a href="/attendance/delete/{{ a.artist_id }}/{{ a.class_id }}">Delete</a>
+</td>
         </tr>
         {% endfor %}
     </table>
