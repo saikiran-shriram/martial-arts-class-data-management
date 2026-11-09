@@ -47,6 +47,39 @@ def add_artist():
 
     return render_template('add_artist.html')
 
+@app.route('/artists/edit/<int:artist_id>', methods=['GET', 'POST'])
+def edit_artist(artist_id):
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+    if request.method == 'POST':
+        artist_name = request.form['artist_name']
+        age = request.form['age']
+        belt = request.form['belt']
+        mob_no = request.form['mob_no']
+        class_id = request.form['class_id']
+        email = request.form['email']
+
+        cursor.execute("""
+            UPDATE Martial_Artist
+            SET artist_name = %s, age = %s, belt = %s,
+                mob_no = %s, class_id = %s, email = %s
+            WHERE artist_id = %s
+        """, (artist_name, age, belt, mob_no, class_id, email, artist_id))
+
+        conn.commit()
+        conn.close()
+
+        return redirect('/artists')
+
+    cursor.execute(
+        "SELECT * FROM Martial_Artist WHERE artist_id = %s",
+        (artist_id,)
+    )
+    artist = cursor.fetchone()
+    conn.close()
+
+    return render_template('edit_artist.html', artist=artist)
+
 
 @app.route('/artists/delete/<int:artist_id>')
 def delete_artist(artist_id):
