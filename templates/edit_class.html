@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Class</title>
+</head>
+<body>
+    <h1>Edit Class Details</h1>
+
+    <form method="POST">
+        <label>Class ID:</label>
+        <input type="number" value="{{ class.class_id }}" disabled>
+        <br><br>
+
+        <label>Address:</label>
+        <input type="text" name="address" value="{{ class.address }}" required>
+        <br><br>
+
+        <label>City:</label>
+        <input type="text" name="city" value="{{ class.city }}" required>
+        <br><br>
+
+        <label>State:</label>
+        <input type="text" name="state" value="{{ class.state }}" required>
+        <br><br>
+
+        <label>Opening Date:</label>
+        <input type="date" name="opening_date" value="{{ class.opening_date }}" required>
+        <br><br>
+
+        <label>No of Students:</label>
+        <input type="number" name="no_of_students" value="{{ class.no_of_students }}" required>
+        <br><br>
+
+        <label>Style ID:</label>
+        <input type="number" name="style_id" value="{{ class.style_id }}" required>
+        <br><br>
+
+        <label>Coach ID:</label>
+        <input type="number" name="coach_id" value="{{ class.coach_id }}" required>
+        <br><br>
+
+        <button type="submit">Update Class</button>
+    </form>
+
+    <br>
+    <a href="/classes">Back to Classes</a>
+</body>
+</html>
