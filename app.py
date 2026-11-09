@@ -254,5 +254,44 @@ def delete_participation(artist_id):
     conn.close()
     return redirect('/participations')
 
+@app.route('/attendance')
+def attendance():
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM Attendance")
+    all_records = cursor.fetchall()
+    print(all_records)   
+    conn.close()
+    return render_template('attendance.html', attendance=all_records)
+
+@app.route('/attendance/add', methods=['GET', 'POST'])
+def add_attendance():
+    if request.method == 'POST':
+        artist_id = request.form['artist_id']
+        class_id = request.form['class_id']
+        date = request.form['date']
+        time = request.form['time']
+        status = request.form['status']
+
+        conn = get_db()
+        cursor = conn.cursor()
+        cursor.execute(""" INSERT INTO Attendance (artist_id, class_id, date , time , status) 
+        VALUES (%s, %s, %s, %s ,%s) 
+    """, (artist_id, class_id, date , time , status))
+        conn.commit()
+        conn.close()
+        return redirect('/attendance')
+
+    return render_template('add_attendance.html')
+
+@app.route('/attendance/delete/<int:artist_id><int:class_id>')
+def delete_attendance(artist_id,class_id):
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM Attendance WHERE artist_id = %s and class_id = %s", (artist_id,class_id))
+    conn.commit()
+    conn.close()
+    return redirect('/attendance')
+
 if __name__ == '__main__':
     app.run(debug=True,use_reloader=False)
