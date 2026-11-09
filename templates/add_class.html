@@ -1,28 +1,48 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Classes</title>
+    <title>Add Class</title>
 </head>
 <body>
-    <h1>Classes</h1>
-    <c href="/classes/add">Add New Class</c>
-    <table border="1">
-        <tr>
-            <th>ID</th><th>Address</th><th>City</th><th>State</th><th>Opening Date</th><th>No of Students</th><th>Style ID</th><th>Coach ID</th><th>Action</th>
-        </tr>
-        {% for c in classes %}
-        <tr>
-            <td>{{ c.class_id }}</td>
-            <td>{{ c.address }}</td>
-            <td>{{ c.city }}</td>
-            <td>{{ c.state }}</td>
-            <td>{{ c.opening_date }}</td>
-            <td>{{ c.no_of_students }}</td>
-            <td>{{ c.style_id }}</td>
-            <td>{{ c.coach_id }}</td>
-            <td><a href="/classes/delete/{{ c.class_id }}">Delete</a></td>
-        </tr>
-        {% endfor %}
-    </table>
+    <h1>Add New Class</h1>
+
+    <form method="POST">
+
+        Address:
+        <input type="text" name="address" required>
+        <br><br>
+
+        City:
+        <input type="text" name="city" required>
+        <br><br>
+
+        State:
+        <input type="text" name="state" required>
+        <br><br>
+
+        Opening Date:
+        <input type="date" name="opening_date" required>
+        <br><br>
+
+        Number of Students:
+        <input type="number" name="no_of_students" required>
+        <br><br>
+
+        Style ID:
+        <input type="number" name="style_id" required>
+        <br><br>
+
+        Coach ID:
+        <input type="number" name="coach_id" required>
+        <br><br>
+
+        <button type="submit">Add Class</button>
+
+    </form>
+
+    <br>
+    <a href="/classes">Back to Classes</a>
+
 </body>
 </html>
