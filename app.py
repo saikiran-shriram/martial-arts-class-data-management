@@ -402,6 +402,38 @@ def add_participation():
 
     return render_template('add_participation.html')
 
+@app.route('/participations/edit/<int:artist_id>/<int:tournament_id>', methods=['GET', 'POST'])
+def edit_participation(artist_id, tournament_id):
+
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+
+    if request.method == 'POST':
+        result = request.form['result']
+
+        cursor.execute("""
+            UPDATE Participates_in
+            SET result = %s
+            WHERE artist_id = %s AND tournament_id = %s
+        """, (result, artist_id, tournament_id))
+
+        conn.commit()
+        conn.close()
+        return redirect('/participations')
+
+    cursor.execute("""
+        SELECT * FROM Participates_in
+        WHERE artist_id = %s AND tournament_id = %s
+    """, (artist_id, tournament_id))
+
+    participation = cursor.fetchone()
+    conn.close()
+
+    return render_template(
+        'edit_participation.html',
+        participation=participation
+    )
+
 @app.route('/participations/delete/<int:artist_id>')
 def delete_participation(artist_id):
     conn = get_db()
