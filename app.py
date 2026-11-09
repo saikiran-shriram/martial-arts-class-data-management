@@ -199,6 +199,43 @@ def add_class():
 
     return render_template('add_class.html')
 
+@app.route('/classes/edit/<int:class_id>', methods=['GET', 'POST'])
+def edit_class(class_id):
+
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+
+    if request.method == 'POST':
+        address = request.form['address']
+        city = request.form['city']
+        state = request.form['state']
+        opening_date = request.form['opening_date']
+        no_of_students = request.form['no_of_students']
+        style_id = request.form['style_id']
+        coach_id = request.form['coach_id']
+
+        cursor.execute("""
+            UPDATE Dojo_Class
+            SET address = %s, city = %s, state = %s,
+                opening_date = %s, no_of_students = %s,
+                style_id = %s, coach_id = %s
+            WHERE class_id = %s
+        """, (address, city, state, opening_date,
+              no_of_students, style_id, coach_id, class_id))
+
+        conn.commit()
+        conn.close()
+        return redirect('/classes')
+
+    cursor.execute(
+        "SELECT * FROM Dojo_Class WHERE class_id = %s",
+        (class_id,)
+    )
+    class_data = cursor.fetchone()
+    conn.close()
+
+    return render_template('edit_class.html', **{'class': class_data})
+
 @app.route('/classes/delete/<int:class_id>')
 def delete_class(class_id):
     conn = get_db()
