@@ -1,0 +1,136 @@
+
+/* General page styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6fb;
+    color: #1e293b;
+    padding: 35px;
+}
+
+/* Page headings */
+h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #172554;
+}
+
+/* Links and buttons */
+a {
+    text-decoration: none;
+}
+
+body > a {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 7px;
+    margin-bottom: 22px;
+    font-weight: 600;
+}
+
+body > a:hover {
+    background: #1d4ed8;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+th {
+    background: #172554;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+td {
+    padding: 13px 15px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+}
+
+tr:hover td {
+    background: #f1f5f9;
+}
+
+/* Edit and Delete links */
+td a {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+td a:first-child {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+td a:last-child {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* Forms */
+form {
+    max-width: 550px;
+    background: white;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #334155;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 11px;
+    margin-bottom: 18px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
