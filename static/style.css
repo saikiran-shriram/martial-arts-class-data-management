@@ -384,3 +384,44 @@ body:not(.dashboard-body) {
     cursor: pointer;
     font-size: 20px;
 }
+
+/* Push page content when sidebar opens */
+
+body {
+    transition: padding-left 0.3s ease;
+    box-sizing: border-box;
+}
+
+body.sidebar-open {
+    padding-left: 260px;
+}
+
+/* Sidebar should not cover page content */
+
+.app-sidebar {
+    width: 260px;
+    box-sizing: border-box;
+}
+
+/* Remove the dark overlay */
+
+.sidebar-overlay.active {
+    background: transparent;
+}
+
+/* Hide hamburger when sidebar is open */
+
+body.sidebar-open .sidebar-toggle {
+    display: none !important;
+}
+
+/* Keep sidebar above the page */
+
+.app-sidebar {
+    z-index: 1003;
+}
+
+.sidebar-overlay {
+    z-index: 1002;
+}
+
