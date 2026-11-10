@@ -180,12 +180,12 @@ button {
 
 .dashboard-main {
     flex: 1;
-    padding: 40px;
+    padding: 20px 40px 40px;
     min-width: 0;
 }
 
 .dashboard-body {
-    padding: 75px 0 0;
+    padding: 0;
     display: block;
     min-height: 100vh;
 }
