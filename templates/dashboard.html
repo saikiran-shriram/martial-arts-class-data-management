@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Martial Arts Management Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+
+    <aside class="sidebar">
+        <h2>🥋 Martial Arts</h2>
+        <p class="sidebar-subtitle">Management System</p>
+
+        <a href="/">Dashboard</a>
+        <a href="/coaches">Coaches</a>
+        <a href="/artists">Martial Artists</a>
+        <a href="/classes">Classes</a>
+        <a href="/styles">Martial Art Styles</a>
+        <a href="/tournaments">Tournaments</a>
+        <a href="/participations">Participations</a>
+        <a href="/attendance">Attendance</a>
+    </aside>
+
+    <main class="dashboard-main">
+
+        <h1>Dashboard Overview</h1>
+        <p class="dashboard-description">
+            Welcome to the Martial Arts Class Management System.
+            Manage your coaches, artists, classes and activities in one place.
+        </p>
+
+        <h2>Management Statistics</h2>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <h3>Total Coaches</h3>
+                <p>{{ stats.total_coaches }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Martial Artists</h3>
+                <p>{{ stats.total_artists }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Total Classes</h3>
+                <p>{{ stats.total_classes }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Art Styles</h3>
+                <p>{{ stats.total_styles }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Tournaments</h3>
+                <p>{{ stats.total_tournaments }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Participations</h3>
+                <p>{{ stats.total_participations }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Attendance Records</h3>
+                <p>{{ stats.total_attendance }}</p>
+            </div>
+
+        </div>
+
+        <h2>Quick Access</h2>
+
+        <div class="quick-grid">
+            <a href="/coaches">Manage Coaches →</a>
+            <a href="/artists">Manage Artists →</a>
+            <a href="/classes">Manage Classes →</a>
+            <a href="/attendance">Manage Attendance →</a>
+        </div>
+
+    </main>
+
+</body>
+</html>
