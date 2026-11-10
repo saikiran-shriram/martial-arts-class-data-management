@@ -1,44 +1,40 @@
 
-<button id="sidebarToggle" class="sidebar-toggle" type="button">
-    ☰
-</button>
-
-<div id="sidebarOverlay" class="sidebar-overlay"></div>
-
-<aside id="appSidebar" class="app-sidebar">
-    <div class="sidebar-header">
-        <h2>🥋 Martial Arts</h2>
-        <button id="sidebarClose" type="button">×</button>
-    </div>
-
-    <p class="sidebar-subtitle">Management System</p>
-
-    <nav>
-        <a href="/">Dashboard</a>
-        <a href="/coaches">Coaches</a>
-        <a href="/artists">Martial Artists</a>
-        <a href="/classes">Classes</a>
-        <a href="/styles">Martial Art Styles</a>
-        <a href="/tournaments">Tournaments</a>
-        <a href="/participations">Participations</a>
-        <a href="/attendance">Attendance</a>
-    </nav>
-</aside>
-
 <script>
     const sidebar = document.getElementById('appSidebar');
     const overlay = document.getElementById('sidebarOverlay');
+    const toggle = document.getElementById('sidebarToggle');
+    const close = document.getElementById('sidebarClose');
 
-    document.getElementById('sidebarToggle').onclick = () => {
+    // Restore sidebar state after page navigation
+    function openSidebar() {
         sidebar.classList.add('active');
         overlay.classList.add('active');
-    };
-
-    document.getElementById('sidebarClose').onclick = closeSidebar;
-    overlay.onclick = closeSidebar;
+        sessionStorage.setItem('sidebarOpen', 'true');
+    }
 
     function closeSidebar() {
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
+        sessionStorage.setItem('sidebarOpen', 'false');
     }
+
+    // Check previously saved state
+    if (sessionStorage.getItem('sidebarOpen') === 'true') {
+        openSidebar();
+    }
+
+    // Toggle button
+    toggle.onclick = () => {
+        if (sidebar.classList.contains('active')) {
+            closeSidebar();
+        } else {
+            openSidebar();
+        }
+    };
+
+    // Close button
+    close.onclick = closeSidebar;
+
+    // Outside click
+    overlay.onclick = closeSidebar;
 </script>
