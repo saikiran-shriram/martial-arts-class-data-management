@@ -425,3 +425,12 @@ body.sidebar-open .sidebar-toggle {
     z-index: 1002;
 }
 
+/* Add spacing between sidebar and page content */
+
+body.sidebar-open {
+    padding-left: 280px !important;
+}
+
+body:not(.sidebar-open) {
+    padding-left: 20px;
+}
