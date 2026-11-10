@@ -13,7 +13,22 @@ def get_db():
 
 @app.route('/')
 def index():
-    return redirect('/artists')
+    conn = get_db()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("""
+        SELECT
+            (SELECT COUNT(*) FROM Coach) AS total_coaches,
+            (SELECT COUNT(*) FROM Martial_Artist) AS total_artists,
+            (SELECT COUNT(*) FROM Dojo_Class) AS total_classes,
+            (SELECT COUNT(*) FROM Martial_Art_Style) AS total_styles,
+            (SELECT COUNT(*) FROM Tournament) AS total_tournaments,
+            (SELECT COUNT(*) FROM Participates_in) AS total_participations,
+            (SELECT COUNT(*) FROM Attendance) AS total_attendance
+    """)
+    stats = cursor.fetchone()
+    conn.close()
+    return render_template('dashboard.html', stats=stats)
+
 
 @app.route('/artists')
 def artists():
