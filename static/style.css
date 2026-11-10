@@ -368,4 +368,19 @@ button:hover {
 body:not(.dashboard-body) {
     padding-top: 75px;
 }
+/* Always show the sidebar toggle button */
 
+.sidebar-toggle {
+    display: block !important;
+    position: fixed !important;
+    top: 15px !important;
+    left: 15px !important;
+    z-index: 1005 !important;
+    background: #172554;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 20px;
+}
