@@ -37,17 +37,21 @@
     const toggle = document.getElementById('sidebarToggle');
     const close = document.getElementById('sidebarClose');
 
-    function openSidebar() {
-        sidebar.classList.add('active');
-        overlay.classList.add('active');
-        sessionStorage.setItem('sidebarOpen', 'true');
-    }
+    
+function openSidebar() {
+    sidebar.classList.add('active');
+    overlay.classList.add('active');
+    document.body.classList.add('sidebar-open');
+    sessionStorage.setItem('sidebarOpen', 'true');
+}
 
-    function closeSidebar() {
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-        sessionStorage.setItem('sidebarOpen', 'false');
-    }
+function closeSidebar() {
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.classList.remove('sidebar-open');
+    sessionStorage.setItem('sidebarOpen', 'false');
+}
+
 
     // Restore sidebar state
     if (sessionStorage.getItem('sidebarOpen') === 'true') {
