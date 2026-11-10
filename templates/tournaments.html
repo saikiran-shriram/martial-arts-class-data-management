@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    {% include 'sidebar.html' %}
     <h1>Tournaments</h1>
     <a href="/tournaments/add">Add New Tournament</a>
     <table border="1">
