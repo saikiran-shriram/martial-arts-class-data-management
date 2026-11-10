@@ -366,7 +366,7 @@ button:hover {
 /* Leave space for the menu button */
 
 body:not(.dashboard-body) {
-    padding-top: 75px;
+    padding-top: 25px;
 }
 /* Always show the sidebar toggle button */
 
