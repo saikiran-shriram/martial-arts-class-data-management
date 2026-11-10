@@ -275,3 +275,92 @@ button {
 button:hover {
     background: #1d4ed8;
 }
+
+
+/* Collapsible sidebar */
+
+.sidebar-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    padding: 10px 15px;
+    font-size: 20px;
+    background: #172554;
+    border-radius: 7px;
+}
+
+.app-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background: #172554;
+    padding: 25px 18px;
+    z-index: 1003;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+.app-sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header h2 {
+    color: white;
+    font-size: 20px;
+}
+
+.sidebar-header button {
+    background: transparent;
+    color: white;
+    font-size: 28px;
+    padding: 0 8px;
+}
+
+.sidebar-subtitle {
+    color: #a5b4fc;
+    margin: 10px 0 30px;
+}
+
+.app-sidebar nav a {
+    display: block;
+    color: white;
+    padding: 14px;
+    border-radius: 7px;
+    margin-bottom: 7px;
+}
+
+.app-sidebar nav a:hover {
+    background: #334679;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1002;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Leave space for the menu button */
+
+body:not(.dashboard-body) {
+    padding-top: 75px;
+}
+
