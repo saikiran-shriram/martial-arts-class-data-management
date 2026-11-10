@@ -184,6 +184,11 @@ button {
     min-width: 0;
 }
 
+.dashboard-body {
+    padding: 75px 0 0;
+    display: block;
+    min-height: 100vh;
+}
 .dashboard-description {
     color: #64748b;
     margin-bottom: 35px;
