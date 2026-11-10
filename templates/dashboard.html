@@ -6,21 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="dashboard-body">
-
-    <aside class="sidebar">
-        <h2>🥋 Martial Arts</h2>
-        <p class="sidebar-subtitle">Management System</p>
-
-        <a href="/">Dashboard</a>
-        <a href="/coaches">Coaches</a>
-        <a href="/artists">Martial Artists</a>
-        <a href="/classes">Classes</a>
-        <a href="/styles">Martial Art Styles</a>
-        <a href="/tournaments">Tournaments</a>
-        <a href="/participations">Participations</a>
-        <a href="/attendance">Attendance</a>
-    </aside>
-
+{% include 'sidebar.html' %}
     <main class="dashboard-main">
 
         <h1>Dashboard Overview</h1>
